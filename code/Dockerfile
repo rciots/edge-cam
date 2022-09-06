@@ -5,8 +5,11 @@ RUN chown -R 1001:0 /app
 COPY package.json /app
 RUN npm install
 COPY . /app
-RUN yum install -y --setopt=tsflags=nodocs ffmpeg && \
-    yum -y clean all --enablerepo='*'
+RUN dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+RUN yum-config-manager --enable powertools
+RUN dnf install -y https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+RUN dnf install -y https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+RUN dnf -y install ffmpeg
 USER 1001
 EXPOSE 8080
 CMD npm start
