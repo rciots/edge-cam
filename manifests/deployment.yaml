@@ -20,6 +20,7 @@ spec:
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
       securityContext: {}
+      serviceAccountName: edge-cam
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
