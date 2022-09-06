@@ -6,4 +6,4 @@ metadata:
 data:
   WS_PORT: 8080
   STREAM_PORT: 8081
-  VIDEO_PORT: 'video6'
+  VIDEO_PORT: 'video0'
