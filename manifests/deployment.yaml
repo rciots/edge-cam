@@ -46,6 +46,8 @@ spec:
               protocol: TCP
             - containerPort: 8081
               protocol: TCP
+          securityContext: 
+            privileged: true
           imagePullPolicy: Always
           terminationMessagePolicy: File
           image: >-
