@@ -28,17 +28,17 @@ spec:
             - name: WS_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: cost-exporter-metrics-cfg
+                  name: edge-cam
                   key: WS_PORT
             - name: STREAM_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: cost-exporter-metrics-cfg
+                  name: edge-cam
                   key: STREAM_PORT
             - name: VIDEO_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: cost-exporter-metrics-cfg
+                  name: edge-cam
                   key: VIDEO_PORT
           ports:
             - containerPort: 8080
