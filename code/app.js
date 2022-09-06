@@ -1,6 +1,7 @@
 var express = require("express");
 var app = new express();
 var fs = require("fs");
+var pathToFfmpeg = require('ffmpeg-static');
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 var websocket = require("ws");
@@ -48,7 +49,7 @@ streaming_websocket.broadcast = function(data){
 };
 // set timeout
 var timeout = setTimeout(function(){
-    var ffmpeg = spawn('ffmpeg', [
+    var ffmpeg = spawn(pathToFfmpeg, [
         '-f', 'v4l2',
         '-framerate', '25',
         '-video_size', '1280x720',
