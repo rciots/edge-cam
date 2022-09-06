@@ -4,6 +4,6 @@ metadata:
   name: edge-cam
   namespace: edge-cam
 data:
-  WS_PORT: 8080
-  STREAM_PORT: 8081
+  WS_PORT: '8080'
+  STREAM_PORT: '8081'
   VIDEO_PORT: 'video0'
