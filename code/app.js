@@ -1,7 +1,6 @@
 var express = require("express");
 var app = new express();
 var fs = require("fs");
-var pathToFfmpeg = require('ffmpeg-static');
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 var websocket = require("ws");
