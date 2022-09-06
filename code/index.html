@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+	<head>
+		<title>RCBOTICS</title>
+		<script type="text/javascript" src="/socket.io.min.js"></script>
+		<script type="text/javascript">
+			var hostname = document.location.hostname;
+			console.log("connecting to host: ", hostname);
+			//Connect to the server via websocket
+			var mysocket = io("http://" + hostname +":8080");
+			mysocket.on("welcome",(message) =>
+				{
+					console.log("Hello! " +message.payload);
+				}
+			)
+			function fill_label( payload )
+			{
+				textbox_input1.value=payload;
+			}
+		</script>
+	</head>
+	<body>
+		<h1>RCBOTICS</h1>
+		<canvas id="video-canvas" width=1280 height=720></canvas>
+		<!-- Javascript video decoder, take in a data stream from a websocket and paint on a canvas -->
+		<script type="text/javascript" src="jsmpeg.min.js"></script>
+		<script type="text/javascript">
+		var mycanvas = document.getElementById("video-canvas");
+		var url = "ws://" + hostname +":8081/";
+		var player = new JSMpeg.Player(url, {canvas: mycanvas});
+		</script>
+	</body>
+</html>
