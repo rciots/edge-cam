@@ -10,7 +10,7 @@ var wsport = process.env.WS_PORT || 8080;
 const { spawn } = require('node:child_process');
 app.use(express.static(__dirname + "/publico"));
 var streamport = process.env.STREAM_PORT || 8081;
-var videoport = process.env.VIDEO_PORT || "video0";
+var videoport = process.env.VIDEO_PORT || "video6";
 http.listen(wsport, function(){
 console.log('Servidor escuchando en: %s', wsport)
 });
@@ -49,17 +49,17 @@ streaming_websocket.broadcast = function(data){
 };
 // set timeout
 var timeout = setTimeout(function(){
-    var ffmpeg = spawn(pathToFfmpeg, [
+    var ffmpeg = spawn('ffmpeg', [
         '-f', 'v4l2',
-        '-framerate', '25',
-        '-video_size', '1280x720',
+        '-framerate', '30',
+        '-video_size', '800x480',
         '-i', '/dev/' + videoport,
         '-f', 'mpegts',
         '-codec:v', 'mpeg1video',
         '-s', '1280x720',
         '-b:v', '1000k',
         '-bf', '0',
-        'http://localhost:' + streamport + '/mystream'
+        'http://localhost:' + wsport + '/mystream'
     ]);
     ffmpeg.stdout.on('data', function(data) {
 
