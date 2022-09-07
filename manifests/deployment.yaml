@@ -31,16 +31,21 @@ spec:
                 configMapKeyRef:
                   name: edge-cam
                   key: WS_PORT
-            - name: STREAM_PORT
+            - name: CLI_PORT
               valueFrom:
                 configMapKeyRef:
                   name: edge-cam
-                  key: STREAM_PORT
-            - name: VIDEO_PORT
+                  key: CLI_PORT
+            - name: VIDEO_DEVICE
               valueFrom:
                 configMapKeyRef:
                   name: edge-cam
-                  key: VIDEO_PORT
+                  key: VIDEO_DEVICE
+            - name: CONNECTOR_SVC
+              valueFrom:
+                configMapKeyRef:
+                  name: edge-cam
+                  key: CONNECTOR_SVC
           ports:
             - containerPort: 8080
               protocol: TCP
