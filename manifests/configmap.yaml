@@ -5,5 +5,6 @@ metadata:
   namespace: edge-cam
 data:
   WS_PORT: '8080'
-  STREAM_PORT: '8081'
-  VIDEO_PORT: 'video0'
+  CLI_PORT: '8081'
+  VIDEO_DEVICE: 'video0'
+  CONNECTOR_SVC: 'edge-ws-connector.edge-ws-connector.svc.cluster.local'
