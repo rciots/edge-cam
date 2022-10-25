@@ -20,8 +20,9 @@ app.post('/mystream', function(req, res){
     req.on("data",function(data){
         ioclient.emit("video", data);
     });
-    req.on("end",function(){
+    req.on("end",function(data){
         console.log("local stream has ended");
+        console.log("reason: " + data);
     });
 });
 
