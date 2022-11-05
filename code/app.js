@@ -30,7 +30,7 @@ app.post('/mystream', function(req, res){
 var timeout = setTimeout(function(){
     var ffmpeg = spawn('ffmpeg', [
         '-f', 'video4linux2',
-        '-framerate', '5',
+        '-framerate', '30',
         '-video_size', '1280x720',
         '-i', '/dev/' + videodevice,
         '-f', 'mpegts',
@@ -48,5 +48,6 @@ var timeout = setTimeout(function(){
 
     ffmpeg.on('exit', function(code) {
         console.log('child process exited with code ' + code);
+        process.exit(2);
     });
 }, 1000);
